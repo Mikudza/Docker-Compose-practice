@@ -1,0 +1,7 @@
+version: '3'
+services:
+  nginx:
+    image: mikops/my-nginx-repo:latest
+    container_name: nginx-for-task
+    ports:
+      - "8080:80"

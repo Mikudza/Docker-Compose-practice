@@ -1,6 +1,5 @@
 FROM nginx:alpine
 
-COPY nginx_html/index.html /var/www/html
+COPY nginx_html/index.html /usr/share/nginx/html/
 
-EXPOSE 8080
-
+EXPOSE 80
