@@ -5,3 +5,6 @@ services:
     container_name: nginx-for-task
     ports:
       - "8080:80"
+    volumes:
+      - ./conf.d:/etc/nginx/conf.d
+
