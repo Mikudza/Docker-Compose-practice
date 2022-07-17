@@ -4,8 +4,19 @@ services:
     image: mikops/my-nginx-repo:latest
     container_name: nginx-for-task
     ports:
-      - "8080:80"
+      - "8081:80"
+      - "443:443"
+    restart: always
     volumes:
-      - ./conf.d:/etc/nginx/conf.d
-      - ./nginx.conf:/etc/nginx/nginx.conf
+      - type: bind
+        source: ./nginx.conf
+        target: /etc/nginx/nginx.conf
+
+      - ./conf.d:/etc/nginx/conf.d:ro
+      - ./certbot/www:/var/www/certbot/:ro
+
+  certbot:
+    image: certbot/certbot:latest
+    volumes:
+      - ./certbot/www/:/var/www/certbot/:rw
 
